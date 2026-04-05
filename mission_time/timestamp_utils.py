@@ -40,9 +40,9 @@ Examples
 >>> base = datetime(2025, 11, 16, 11, 30, tzinfo=timezone.utc)
 >>> result = add_time_delta(base, hours=7, minutes=645, output_tz="UTC")
 >>> result["iso8601"]
-'2025-11-17T01:45:00+00:00'
+'2025-11-17T05:15:00+00:00'
 >>> result["unix"]
-1763250300.0
+1763356500.0
 """
 
 from __future__ import annotations
@@ -118,12 +118,12 @@ def add_time_delta(
     >>> from datetime import datetime, timezone
     >>> base = datetime(2025, 11, 16, 11, 30, tzinfo=timezone.utc)
     >>> add_time_delta(base, minutes=645, hours=7, output_tz="EDT")
-    {'iso8601': '2025-11-16T21:45:00-05:00', 'unix': 1763250300.0, 'timezone': 'EDT'}
+    {'iso8601': '2025-11-17T00:15:00-05:00', 'unix': 1763356500.0, 'timezone': 'EDT'}
 
     Use negative values to go backwards in time:
 
     >>> add_time_delta(base, hours=-2, output_tz="UTC")
-    {'iso8601': '2025-11-16T09:30:00+00:00', 'unix': 1763188200.0, 'timezone': 'UTC'}
+    {'iso8601': '2025-11-16T09:30:00+00:00', 'unix': 1763285400.0, 'timezone': 'UTC'}
     """
     if output_tz not in TIMEZONES:
         raise ValueError(
